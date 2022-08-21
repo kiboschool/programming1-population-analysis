@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Countries {% endblock %}</h1>
+    {% for country, pop in countries.items() %}
+        <ul class='message'>
+            <li class="content"><b>{{ country }}</b>&nbsp;&nbsp;&nbsp;{{ pop }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
