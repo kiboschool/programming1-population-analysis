@@ -10,4 +10,5 @@ You are asked to design and implement a program that performs the following:
 - Create a CSV file with 2 columns (Country | Density) from previous findings.
 - Create a flask endpoint for the list from point one - when you click the link, the list is rendered.
 - Add a value to the JSON that limits the number of countries that appear at the flask endpoint, for example if the number is 3 -> then the first 3 countries are rendered.
+If the number is greater than the list size -> All items should appear normally
 - Add the population density to each country in JSON file. You can crete a new JSON file with added data.
