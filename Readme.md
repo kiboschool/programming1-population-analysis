@@ -37,29 +37,20 @@ As you can see, columns are available as follows:
 - population is available at the population indicator surface area
 - density is the additional column that you are asked to calculate using `(pop_density = population/area)`
 
-## Configuration file
-You will be given a configuration file that looks like:
-```
-{
-  "surface_area_year": 2017,
-  "population_year": 2021,
-  "sa_file": "datasets/API_AG.SRF.TOTL.K2_DS2.csv",
-  "pop_file": "datasets/API_SP.POP.TOTL_DS2.csv",
-  "heading_line": 4,
-  "list_size": 6
-}
-```
-This file has some inputs to your code that you can later change without the need to modify values within the code:
-- surface_area_year: is the year that we will use to pull surface areas from the first dataset (meaning that our own data set will include this years' info only)
-- population_year: is the year that we will use to filter population values from the second dataset (meaning that our own data set will include this years' info only)
-- sa_file: location for the first dataset file
-- pop_file: location for the second datraset file
-- heading_line: number of lines in the dataset that are used for heading data
-- list_size: length of the list that should be rendered using the flask endpoint
+## Constants
+Your code will accept some configuration constant values. These are used to tune some inputs for the whole program:
+- const_surface_area_year: is the year that we will use to pull surface areas from the first dataset (meaning that our own data set will include this years' info only)
+- const_population_year: is the year that we will use to filter population values from the second dataset (meaning that our own data set will include this years' info only)
+- const_sa_file: location for the first dataset file
+- const_pop_file: location for the second datraset file
+- const_heading_line: number of lines in the dataset that are used for heading data
+- const_list_size: length of the list that should be rendered using the flask endpoint
 
-##
-After creating your own dataset, you need to create a free style flask endpoint that renders the data within your new set.
-You can also add new metrics to the page like:
+> **_Bonus:_**  You may later change some constant values and check how your program behaves. 
+>If you face empty cells within the dataset, skip them or insert NA instead using your program.
+
+## Other Metrics - Bonus
+After creating your own dataset, you can also implement other metrics:
 - Country with highest density
 - Country with highest surface area
 - Countries with a population in range (X - Y)
@@ -67,9 +58,6 @@ You can also add new metrics to the page like:
 # Starter Code
 You are given a file called `country_analysis.py` that shows function signatures and some suggested starter code that you can start with. 
 Functions are documented so you can understand what would be the input and output for each one of them.
-
-# Testing
-WIP
 
 # Hints
 - Datasets format is the same. That means no more work is needed when merging columns from different datasets. Same column of countries is available at both sets.

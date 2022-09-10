@@ -1,4 +1,3 @@
-import json
 import csv
 
 configuration = {}
@@ -9,6 +8,12 @@ pop_density = {"country_name": [],
                "population": [],
                "density": []
                }
+
+const_surface_area_year = 2017
+const_population_year = 2021
+const_sa_file = "datasets/API_AG.SRF.TOTL.K2_DS2.csv"
+const_pop_file = "datasets/API_SP.POP.TOTL_DS2.csv"
+const_heading_line = 4
 
 
 def read_json():

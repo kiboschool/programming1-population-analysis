@@ -1,8 +1,0 @@
-{
-  "surface_area_year": 2017,
-  "population_year": 2021,
-  "sa_file": "datasets/API_AG.SRF.TOTL.K2_DS2.csv",
-  "pop_file": "datasets/API_SP.POP.TOTL_DS2.csv",
-  "heading_line": 4,
-  "list_size": 6
-}

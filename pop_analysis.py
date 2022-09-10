@@ -1,4 +1,3 @@
-import json
 import csv
 
 configuration = {}
@@ -10,17 +9,11 @@ pop_density = {"country_name": [],
                "density": []
                }
 
-
-def read_json():
-    """
-    This function reads JSON files and returns an internal dictionary
-    """
-    global configuration
-    with open(file='conf.json', mode='r') as f:
-        d = json.loads(f.read())
-        # print(d)
-        configuration = d
-    return d
+const_surface_area_year = 2017
+const_population_year = 2021
+const_sa_file = "datasets/API_AG.SRF.TOTL.K2_DS2.csv"
+const_pop_file = "datasets/API_SP.POP.TOTL_DS2.csv"
+const_heading_line = 4
 
 
 def get_indicator_from_dataset(filename, indicator='surface_area'):
@@ -34,16 +27,16 @@ def get_indicator_from_dataset(filename, indicator='surface_area'):
         data = csv.reader(data_reader)
 
         for idx, line in enumerate(data):
-            if idx == configuration['heading_line']:
+            if idx == const_heading_line:
                 if indicator == "surface_area":
-                    year_idx = line.index(str(configuration['surface_area_year']))
+                    year_idx = line.index(str(const_surface_area_year))
                 elif indicator == "population":
-                    year_idx = line.index(str(configuration['population_year']))
+                    year_idx = line.index(str(const_population_year))
                 else:
                     print("not supported indicator")
                     exit(-1)
 
-            if idx > configuration['heading_line']:
+            if idx > const_heading_line:
                 filtered_data.append(line[year_idx])
 
     return filtered_data
@@ -58,7 +51,7 @@ def get_countries(filename):
     with open(filename, 'r') as data_reader:
         data = csv.reader(data_reader)
         for idx, line in enumerate(data):
-            if idx > configuration['heading_line']:
+            if idx > const_heading_line:
                 pop_density['country_name'].append(line[0])
                 pop_density['country_code'].append(line[1])
 
@@ -69,9 +62,9 @@ def create_densities():
     """
     global pop_density
     idx = 0
-    get_countries(filename=configuration['sa_file'])
-    pop_density['surface_area'] = get_indicator_from_dataset(filename=configuration['sa_file'], indicator='surface_area')
-    pop_density['population'] = get_indicator_from_dataset(filename=configuration['pop_file'], indicator='population')
+    get_countries(filename=const_sa_file)
+    pop_density['surface_area'] = get_indicator_from_dataset(filename=const_sa_file, indicator='surface_area')
+    pop_density['population'] = get_indicator_from_dataset(filename=const_pop_file, indicator='population')
 
     while idx < len(pop_density['surface_area']):
         density = float(pop_density['population'][idx]) / float(pop_density['surface_area'][idx])
@@ -99,6 +92,5 @@ def customized_dataset():
 
 
 if __name__ == '__main__':
-    read_json()
     create_densities()
     customized_dataset()
