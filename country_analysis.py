@@ -1,27 +1,8 @@
 import csv
 
-configuration = {}
-
-pop_density = {"country_name": [],
-               "country_code": [],
-               "surface_area": [],
-               "population": [],
-               "density": []
-               }
-
-const_surface_area_year = 2017
-const_population_year = 2021
-const_sa_file = "datasets/API_AG.SRF.TOTL.K2_DS2.csv"
-const_pop_file = "datasets/API_SP.POP.TOTL_DS2.csv"
-const_heading_line = 4
-
-
-def read_json():
-    """
-    This function reads JSON files and returns an internal dictionary
-    """
-    pass
-
+YEAR = 2017
+SURFACE_AREA_PATH = "datasets/API_AG.SRF.TOTL.K2_DS2.csv"
+POPULATION_PATH = "datasets/API_SP.POP.TOTL_DS2.csv"
 
 def get_indicator_from_dataset(filename, indicator='surface_area'):
     """
@@ -54,7 +35,5 @@ def customized_dataset():
 
 
 if __name__ == '__main__':
-    read_json()
-
     create_densities()
     customized_dataset()
