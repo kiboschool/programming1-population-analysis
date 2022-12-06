@@ -24,7 +24,12 @@ where the data is available.
 ## Your Task
 
 Use the provided datasets to create a new dataset with each country's population 
-density. For each country, the new dataset should include:
+density. 
+
+Your program should write an output file as a CSV, similar to the input
+datasets. Write your new dataset to the file `pop_density.csv`.
+
+For each country, the new dataset should include:
 
 - Name
 - Country Code
@@ -32,7 +37,7 @@ density. For each country, the new dataset should include:
 - Surface Area
 - Population Density 
 
-The final dataset should look like this:
+The final dataset should have columns and values like this:
 
 |country_name |country_code| surface_area | population | density |
 |-----|------------------------------|-------------|------------------|---------------|
@@ -53,7 +58,8 @@ United Arab Emirates|	ARE|	9991083|	98647.9|	101.2802401|
 
 Calculate the population density using the formula `pop_density = population / area`
 
-If you face empty cells within the dataset, skip them or insert NA instead using your program.
+If you encounter empty cells within the dataset, insert `"NA"` for Not Applicable 
+for the data for that cell in your results.
 
 ## Starter Code
 
@@ -65,10 +71,11 @@ signatures, constant values, and some of the code for loading the files.
 - `SURFACE_AREA_PATH`: location of the surface area dataset file
 - `POPULATION_PATH`: location of the population dataset file
 
-
 ## Steps
 
-
+- Use the CSV module to write each row to the output file. If you are storing
+    each row as a dictionary, the DictWriter of the csv module may be useful.
+https://docs.python.org/3/library/csv.html#csv.DictWriter
 
 ## Bonus: Other Metrics
 
